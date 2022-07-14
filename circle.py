@@ -10,7 +10,7 @@ class Circle(pygame.sprite.Sprite):
         self.infected = infected
 
         # instancier les parametres
-        self.size_circle = (30, 30)
+        self.size_circle = (50, 50)
         self.width = width
         self.height = height
         self.surface = surface
@@ -29,7 +29,7 @@ class Circle(pygame.sprite.Sprite):
         self.y = random.randint(30, height - 30)
 
         # proprieter autre
-        self.velocity = 2
+        self.velocity = 8
         self.direction_x = 0
         self.direction_y = 0
 
@@ -38,9 +38,13 @@ class Circle(pygame.sprite.Sprite):
             self.direction_x = random.uniform(-1, 1)
             self.direction_y = random.uniform(-1, 1)
 
+        self.all_circles = pygame.sprite.Group()
+
     # permet de dire si il deux objets se touche
     def check_collision(self, x, y) -> bool:
         if 30 > self.x - x > -30 and 30 > self.y - y > -30:
+            self.direction_x * -1
+            self.direction_y * -1
             return True
         else:
             return False
@@ -48,7 +52,7 @@ class Circle(pygame.sprite.Sprite):
     # transforme un cercle en infecté
     def transform(self, x, y):
         self.image = pygame.image.load('circle_green.png')
-        self.size_circle = (30, 30)
+        self.size_circle = self.size_circle
         self.image = pygame.transform.scale(self.image, self.size_circle)
         self.x = x
         self.y = y
