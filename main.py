@@ -6,16 +6,17 @@ from circle import Circle
 pygame.init()
 
 
-# variables du compte a rebours
+# variables du compteur
 counter = 0
-timer_stop = False
+counter_stop = False
+
 
 # constantes
 WIDTH = 1500
 HEIGHT = 800
 BACKGROUND = (255, 255, 255)
 FPS = 90
-NUMBER_OF_CIRCLE = 50
+NUMBER_OF_CIRCLE = 2
 FORGROUND_TEXT = (255, 255, 255)
 FINAL_BACKGROUND = (0, 0, 0)
 FONT = pygame.font.Font('freesansbold.ttf', 60)
@@ -38,13 +39,14 @@ list_infected = [Circle(WIDTH, HEIGHT, screen, True)]
 # appeler l'horloge ( regleur fps )
 clock = pygame.time.Clock()
 
-# lancement du timer
-pygame.time.set_timer(pygame.USEREVENT, 1000)
-
 # main loop
 running = True
 
 while running:
+
+    # compte les frames
+    if not counter_stop:
+        counter += 1
 
     # evenements
     for events in pygame.event.get():
@@ -52,12 +54,6 @@ while running:
         # quitter la fenetre
         if events.type == pygame.QUIT:
             running = False
-
-        elif events.type == pygame.USEREVENT:
-            if timer_stop:
-                pass
-            else:
-                counter += 1
 
     # faire bouger les infectés
     for infected in list_infected:
@@ -84,9 +80,9 @@ while running:
     # verifier que il n'y a plus de cercle non infecter pour lancer l'ecran de fin
     if len(list_circle) == 0:
         time.sleep(1)
-        timer_stop = True
+        counter_stop = True
         screen.fill(FINAL_BACKGROUND)  # ecran de fin en noir
-        TEXT = FONT.render('FIN \n' + str(counter) + ' seconde(s)', True, FORGROUND_TEXT, FINAL_BACKGROUND)
+        TEXT = FONT.render('Fini en : ' + str(counter) + ' points', True, FORGROUND_TEXT, FINAL_BACKGROUND)
         TEXTRECT = TEXT.get_rect()
         TEXTRECT.center = (WIDTH // 2, HEIGHT // 2)
         screen.blit(TEXT, TEXTRECT)
