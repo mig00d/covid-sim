@@ -3,14 +3,14 @@ import random
 
 
 class Circle(pygame.sprite.Sprite):
-    def __init__(self, width, height, surface, infected):
+    def __init__(self, width, height, surface, infected, size_circle, velocity_circle):
         super().__init__()
 
         # definie si il est infecter ou pas
         self.infected = infected
 
         # instancier les parametres
-        self.size_circle = (50, 50)
+        self.size = size_circle
         self.width = width
         self.height = height
         self.surface = surface
@@ -29,7 +29,7 @@ class Circle(pygame.sprite.Sprite):
         self.y = random.randint(30, height - 30)
 
         # proprieter autre
-        self.velocity = 8
+        self.velocity = velocity_circle
         self.direction_x = 0
         self.direction_y = 0
 
