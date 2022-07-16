@@ -22,7 +22,7 @@ class Circle(pygame.sprite.Sprite):
             self.image = random.choice([pygame.image.load('circle_blue.png'), pygame.image.load('circle_red.png')])
 
         # mettre l'image a la bonne taille
-        self.image = pygame.transform.scale(self.image, self.size_circle)
+        self.image = pygame.transform.scale(self.image, self.size)
 
         # position de depart aleatoire
         self.x = random.randint(30, width - 30)
@@ -52,8 +52,8 @@ class Circle(pygame.sprite.Sprite):
     # transforme un cercle en infecté
     def transform(self, x, y):
         self.image = pygame.image.load('circle_green.png')
-        self.size_circle = self.size_circle
-        self.image = pygame.transform.scale(self.image, self.size_circle)
+        self.size = self.size
+        self.image = pygame.transform.scale(self.image, self.size)
         self.x = x
         self.y = y
 

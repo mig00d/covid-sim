@@ -9,22 +9,27 @@ data = []
 counter = 0
 
 # constantes
+NUMBER_EXPERIENCE = 200
+
 WIDTH = 1500
 HEIGHT = 800
 BACKGROUND = (255, 255, 255)
 FPS = 60
-NUMBER_OF_CIRCLE = 100
+NUMBER_OF_CIRCLE = 50
 FORGROUND_TEXT = (255, 255, 255)
-
-NUMBER_EXPERIENCE = 10  # nombre d'experience
 
 SIZE_CIRCLE = (50, 50)
 VELOCITY_CIRCLE = 8
 
 leaving = False
 
-# ------------------------------------------------------------------------------------------------------------------------
-for experience in range(NUMBER_EXPERIENCE + 1):
+counter_experience = 0
+
+# ------------------------------------ LANCEMENT DES EXPERIENCES ------------------------------------------------------
+
+# ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+for experience in range(NUMBER_EXPERIENCE):
     pygame.init()
 
     # parametre fenetre
@@ -89,9 +94,10 @@ for experience in range(NUMBER_EXPERIENCE + 1):
         # verifier que il n'y a plus de cercle non infecter pour lancer l'ecran de fin
         if len(list_circle) == 0:
             data.append(counter)
-            print(data)
             counter = 0
             running = False
+            counter_experience += 1
+            print('Nombre experience ' + str(counter_experience))
 
         # configurer les FPS ( frames par seconde )
         clock.tick(FPS)
@@ -102,3 +108,8 @@ for experience in range(NUMBER_EXPERIENCE + 1):
         break
 
 print('Simulation Terminer')
+print('liste terminer: ', data)
+
+
+
+

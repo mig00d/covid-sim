@@ -5,8 +5,8 @@
 #### ( si vous pouvez changer l'experience a l'aide des constantes )
 
 ## TASK
-    - faire un graphique avec les données recuperer a la fin des experiences
-
+    - faire maintenant un mode evolutif ou le nombre de cercles augmente petit a petit ( de 10 en 10 ? )
+    - trouver un moyen pour que le graphique affiche a quelle intervalle de nombre correspond chaque classe
 
 liens git: https://github.com/r3dma0/covid-sim.git
 
